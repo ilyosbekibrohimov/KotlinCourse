@@ -1,24 +1,30 @@
 import java.util.*
 
 fun main(args: Array<String>) {
-    println(if (args[0].toInt() < 12) "Good  Morning" else "Good night")
+
     //feed fish challenge
     //feedFish()
     //getFortune
-   // println(getFortune())
+    // println(getFortune())
     //mood app
     //giveCommand()
     //dirty processor
     //dirtyProcessor()
 
     val program = Program()
-    program.addTwoNumbers(1, 5)
+
     program.addTwoNumbers(1, 5, object : MyInterface {
         override fun execute(sum: Int) {
             println(sum)
         }
 
     })
+    //lambda1
+
+    program.addTwoNumbers(2, 7) { s: Int -> println(s) }
+    //lambda2
+    program.getMyName { message: String -> print(message) }
+
     val members: MutableList<String> = mutableListOf()
     while (true) {
         print("Please enter your  choice: ")
