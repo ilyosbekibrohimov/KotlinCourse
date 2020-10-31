@@ -1,66 +1,58 @@
 import java.util.*
 
+fun main(args: Array<String>) {
+    println(if (args[0].toInt() < 12) "Good  Morning" else "Good night")
+    //feed fish challenge
+    //feedFish()
+    //getFortune
+   // println(getFortune())
+    //mood app
+    //giveCommand()
+    //dirty processor
+    //dirtyProcessor()
 
+    val program = Program()
+    program.addTwoNumbers(1, 5)
+    program.addTwoNumbers(1, 5, object : MyInterface {
+        override fun execute(sum: Int) {
+            println(sum)
+        }
 
-fun main() {
-
-    //region 1. Conditional Statements: Months Program
-    println("Welcome to Months of the Year")
-
-    println("Pease enter the Month Number:")
-
-    val read = Scanner(System.`in`)
-    val montNumber = read.nextInt()
-
-    when (montNumber) {
-        1 -> println("You selected January")
-        2 -> println("You selected February")
-        3 -> println("You selected March")
-        4 -> println("You selected April")
-        5 -> println("You selected May")
-        6 -> println("You selected June")
-        7 -> println("You selected July")
-        8 -> println("You selected August")
-        9 -> println("You selected September")
-        10 -> println("You selected October")
-        11 -> println("You selected November")
-        12 -> println("You selected December")
-        else -> println("Error")
+    })
+    val members: MutableList<String> = mutableListOf()
+    while (true) {
+        print("Please enter your  choice: ")
+        val name = readLine()!!.toInt()
+        when (name) {
+            1 -> addMember(members)
+            2 -> removeMember(members)
+            3 -> listOfMembers(members)
+        }
     }
-    //endregion
-    //region 2. Functions
-    println(getGreeeitng()) // print is also function
-    sayHello()
-    singleExpressionFunction()
-    sayHi(word = "Ilyosbek and Kotlin", anotherWord = "This is another text from Kotlin")
+}
 
-
-
-    //endregion
+fun addMember(members: MutableList<String>) {
+    print("Enter your name: ")
+    val name = readLine()
+    if (name != null) {
+        members.add(name)
+    }
 
 }
 
-//region function that returns a value
-fun getGreeeitng():String? {
-    val greeting= readLine()
-    return greeting
+fun removeMember(members: MutableList<String>) {
+    println("Plaese enter name you want to remove: ")
+    val remName = readLine()
+    if (members.contains(remName)) {
+        members.remove(remName)
+    } else {
+        println("Name you searched for is not in this list!!!")
+    }
 }
-//endregion
-//region function that returns nothing
-fun sayHello(){
-    print("This function returns nothing")
-}
-//endregion
 
-//region Single Expression Function
-fun singleExpressionFunction(): String = "Single Expression Function"
-//endregion
-
-//region function with parameters
-fun sayHi(word:String, anotherWord:  String){
-   val message = "Hello $word"
-    println(message)
-    val anotherMessage = "MESSAGE: $anotherWord"
-    println(anotherMessage)
+fun listOfMembers(members: MutableList<String>) {
+    for (member in members) {
+        println(member)
+    }
 }
-//endregion
+
